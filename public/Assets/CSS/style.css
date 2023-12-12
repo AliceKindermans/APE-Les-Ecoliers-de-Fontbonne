@@ -1,0 +1,108 @@
+body {
+    font-family: 'Eczar', serif;
+}
+
+p {
+    color: gray;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+    justify-content: justify;
+    align-items: start;
+}
+
+main {
+    flex: 3;
+    /* 3/4 de la largeur */
+    color: #FF51B0;
+}
+
+aside {
+    flex: 1;
+    /* 1/4 de la largeur */
+    color: #FD8A5E;
+}
+
+/*navbar*/
+nav {
+    background-color: #00C69D;
+
+}
+
+/* Personalisation des nav-link pour les états survolés et focus */
+
+.nav-link {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* Ajouts Media queries pour version Tablet & Desktop*/
+@media screen and (min-width: 768px) {
+    .nav-link {
+        font-size: 1.5rem;
+    }
+}
+
+
+/*image logo APE*/
+#logo {
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    border: none;
+    -moz-border-radius: 75px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+}
+
+@media (max-width: 650px) {
+    #logo {
+        width: 100px;
+        height: 100px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+    }
+}
+
+.divTransparente {
+    display: flex;
+    align-items: center;
+    /* Aligner les éléments verticalement au centre */
+}
+
+
+
+/* FOOTER */
+
+/* FOOTER */
+
+footer {
+    background-color: #00C69D;
+    margin: 0 90px;
+}
+
+.footer-contact {}
+
+.copyright,
+.legals {
+    text-align: center;
+    text-decoration: none;
+}
