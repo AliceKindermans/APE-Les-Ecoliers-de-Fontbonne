@@ -1,0 +1,19 @@
+<aside class="verbatim">
+	{% for verbatim in verbatims %}
+
+		<div class="card mx-3 my-3">
+			<div class="card-body">
+				<p>"
+					{{verbatim.description}}
+					"</p>
+			</div>
+		</div>
+	{% endfor %}
+
+	<div class="card mx-3 my-3" style="width: 18rem;">
+		<img src="Assets/Images/dotpub.jpg" class="card-img-top imgPub" alt="">
+		<div class="card-body">
+			<p class="card-text">Publicité.</p>
+		</div>
+	</div>
+</aside>

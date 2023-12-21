@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EventRepository;
+use DateTimeImmutable;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -34,6 +35,7 @@ class Event
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -88,6 +90,7 @@ class Event
 
         return $this;
     }
+
 
     /**
      * @return Collection<int, Image>

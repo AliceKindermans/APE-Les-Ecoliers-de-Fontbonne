@@ -3,20 +3,27 @@ body {
 }
 
 p {
-    color: gray;
+    color: grey;
+}
+
+a,
+i {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
 }
 
 .container {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-    justify-content: center;
+
 }
 
 .flex {
     display: flex;
-    justify-content: justify;
     align-items: start;
+    justify-content: center;
 }
 
 main {
@@ -39,7 +46,8 @@ nav {
 
 /* Personalisation des nav-link pour les états survolés et focus */
 
-.nav-link {
+.nav-link,
+.footer-link {
     padding: 10px;
     text-decoration: none;
     color: white;
@@ -47,7 +55,9 @@ nav {
 }
 
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.footer-link:hover,
+.footer-link:focus {
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -99,10 +109,20 @@ footer {
     margin: 0 90px;
 }
 
-.footer-contact {}
+.footer-contact {
+    justify-content: right;
+}
+
+#contact {
+    display: flex;
+    align-items: center;
+}
 
 .copyright,
 .legals {
     text-align: center;
     text-decoration: none;
+    color: white;
 }
+
+/*Events page*/

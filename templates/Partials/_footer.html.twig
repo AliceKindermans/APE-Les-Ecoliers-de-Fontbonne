@@ -1,31 +1,32 @@
 <footer>
-	<div class="container flex ">
-		<div
-			class="container footer-contact">
-			{# {% for association in associations %}#}
-			<div class="container flex" id="contact">
-				<a class="footer-link fa-brands fa-facebook" href="" target="_blank"></a>
-				<a class="footer-link fa-solid fa-envelope" href="mailto:"></a>
-
-				<i class="footer-link fa-solid fa-location-dot"></i>
-				<div id="adress">
-					<p style="vertical-align:top">
-						place de la mairie
-						<br>34160 Galargues</p>
+	<div class="container flex">
+		<div class="container footer-contact">
+			{% for association in associations %}
+				<div class="container" id="contact">
+					<a class="footer-link fa-brands fa-facebook" href="" target="_blank"></a>
+					<a class="footer-link fa-solid fa-envelope" href="mailto:{{association.email}}"></a>
+					<div id="adress">
+						<i class="footer-link fa-solid fa-location-dot"></i>
+						<p style="margin-left: 5px; display: inline;">
+							place de la mairie 34160 Galargues</p>
+					</div>
 				</div>
-			</div>
-			{# {% endfor %} #}
+			{% endfor %}
 		</div>
-		{# Si l'utilisateur n'a pas le rôle ROLE_USER, affiche l'icône fa-user 
-																									{% if not is_granted('ROLE_USER') %}#}
-		<a class="footer-link fa-solid fa-user" href=""></a>
+		{# Si l'utilisateur n'a pas le rôle ROLE_USER, affiche l'icône fa-user #}
+		{% if not is_granted('ROLE_USER') %}
+			<a class="footer-link fa-solid fa-user" href=""></a>
+		{% endif %}
+		{# Si l'utilisateur a le rôle ROLE_ADMIN, affiche l'icône fa-screwdriver-wrench #}
+		{% if is_granted('ROLE_ADMIN')%}
+			<a class="footer-link fa-solid fa-screwdriver-wrench" href=""></a>
+		{% endif %}
 
-		{# Si l'utilisateur a le rôle ROLE_ADMIN, affiche l'icône fa-screwdriver-wrench 
-																									{% if is_granted('ROLE_ADMIN')%}#}
-		<a class="footer-link fa-solid fa-screwdriver-wrench" href=""></a>
-		{# Si l'utilisateur a le rôle ROLE_USER, affiche l'icône fa-user-xmark 
-																									{% if is_granted('ROLE_USER')%}#}
-		<a class="footer-link fa-solid fa-user-xmark" href=""></a>
+		{# Si l'utilisateur a le rôle ROLE_USER, affiche l'icône fa-user-xmark #}
+		{% if is_granted('ROLE_USER') %}
+			<a class="footer-link fa-solid fa-user-xmark" href=""></a>
+		{% endif %}
+
 
 	</div>
 
@@ -34,7 +35,7 @@
 		<a class="footer-link" href="">Politique RGPD</a>
 	</div>
 
-	<div class="container copyright">
-		&copy; 2023 APE - Les ecoliers de Fontbonne - Tous droits réservés.
+	<div class="container flex copyright">
+		&copy; 2023 APE : Les ecoliers de Fontbonne - Tous droits réservés.
 	</div>
 </div></footer>

@@ -27,10 +27,14 @@ class Image
     #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'images')]
     private Collection $event;
 
+    #[ORM\OneToMany(mappedBy: 'image', targetEntity: Pub::class)]
+    private Collection $pubs;
+
     public function __construct()
     {
         $this->Association = new ArrayCollection();
         $this->event = new ArrayCollection();
+        $this->pubs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -106,6 +110,36 @@ class Image
     public function removeEvent(Event $event): static
     {
         $this->event->removeElement($event);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pub>
+     */
+    public function getPubs(): Collection
+    {
+        return $this->pubs;
+    }
+
+    public function addPub(Pub $pub): static
+    {
+        if (!$this->pubs->contains($pub)) {
+            $this->pubs->add($pub);
+            $pub->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removePub(Pub $pub): static
+    {
+        if ($this->pubs->removeElement($pub)) {
+            // set the owning side to null (unless already changed)
+            if ($pub->getImage() === $this) {
+                $pub->setImage(null);
+            }
+        }
 
         return $this;
     }

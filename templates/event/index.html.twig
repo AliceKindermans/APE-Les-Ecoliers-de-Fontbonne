@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EventController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="container flex ">
+
+		<main class="mb-3 mt-5">
+			<h1>
+				Nos Evenements
+			</h1>
+
+			<div class="mb-3 mt-3">
+				<h2>Pourquoi realise-t-on tous ces évenements ?</h2>
+				<ul>
+					<li>
+						Pour faire plaisir aux enfants</li>
+					<li>
+						Pour récolter des fonds pour les maitresses et nos enfants</li>
+				</ul>
+
+			</div>
+			<div class="d-flex flex-wrap">
+				{% for event in events %}
+					<div class="Eventcard mx-3 my-3" style="width: 18rem;">
+						<img src="..." class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">{{event.title}}</h5>
+							<p class="card-text">{{ event.description}}</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</main>
+		{% include "partials/_pub.html.twig" %}
+	</div>
+{% endblock %}
