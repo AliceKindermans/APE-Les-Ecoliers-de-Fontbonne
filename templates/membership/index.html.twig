@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}APE - Adhésion
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container flex ">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success mt-4">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<h2>Adhésion</h2>
+
+		{{ form_start(userForm) }}
+		{{ form_row(userForm.email) }}
+		{{ form_row(userForm.roles) }}
+		{{ form_row(userForm.name) }}
+		{{ form_row(userForm.surname) }}
+		{{ form_row(userForm.rgpd) }}
+
+		<h3>Enfants</h3>
+		<div id="children" data-prototype="{{ form_widget(userForm.children.vars.prototype)|e('html_attr') }}">
+			{% for childForm in userForm.children %}
+				{{ form_row(childForm) }}
+			{% endfor %}
+		</div>
+		<button type="button" onclick="addChildForm()">Ajouter un enfant</button>
+
+
+		<br><br>
+
+		<button type="submit">S'inscrire</button>
+		{{ form_end(userForm) }}
+
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{#<script src="{{ asset('./Assets/JS/ChlidAddition.js') }}" defer></script>#}
+	<script>
+		function addChildForm() {
+var container = document.getElementById('children');
+var index = container.children.length;
+
+var prototype = container.getAttribute('data-prototype');
+var newForm = prototype.replace(/__name__/g, index);
+
+container.insertAdjacentHTML('beforeend', newForm);
+}
+	</script>
+{% endblock %}
