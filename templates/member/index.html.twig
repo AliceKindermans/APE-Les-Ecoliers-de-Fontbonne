@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	APE - Les Membres
+{% endblock %}
+
+{% block body %}
+
+	<div class="container flex ">
+
+		<main class="mb-3 mt-5">
+			<h1>
+				Nos Membres
+			</h1>
+
+			<div class="d-flex flex-wrap">
+
+				{% for user in users %}
+					{% if user.status is not empty %}
+						<div class="Eventcard mx-3 my-3" style="width: 18rem;">
+							{% if user.image is not null %}
+								<img src="{{ asset('Images/' ~ user.image.filename) }}" class="card-img-top" alt="image de {{user.status}}">
+							{% endif %}
+							<div class="card-body">
+								<h2 class="card-title">{{user.name}}
+									{{user.surname}}</h2>
+								<h3 class='card-status'>{{user.status}}</h3>
+								{% if user.children is not empty %}
+									<p>Mes enfants dans le RPI :</p>
+
+									{% for child in user.children %}
+										<ul>
+											<li>{{ child.name }}
+												{{ child.surname }}
+												en
+												{{ child.grade }}
+												dans la classe de
+												{{ child.mistress }}
+												.</li>
+										</ul>
+
+									{% endfor %}
+
+								{% endif %}
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</main>
+		{% include "partials/_pub.html.twig" %}
+	</div>
+{% endblock %}
+
+
+{# Affichez les détails de l'utilisateur ici #}
