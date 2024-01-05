@@ -1,7 +1,6 @@
 
-// Votre fichier JavaScript
 
-document.addEventListener('DOMContentLoaded', function () { // Écouteur d'événement pour le bouton "Ajouter un enfant"
+document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('add-child').addEventListener('click', function () { // Clônez le premier champ pour les enfants
         var firstChild = document.querySelector('.child-form');
         var clonedChild = firstChild.cloneNode(true);

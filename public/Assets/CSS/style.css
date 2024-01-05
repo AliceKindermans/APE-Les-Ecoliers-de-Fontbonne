@@ -6,12 +6,19 @@ p {
     color: grey;
 }
 
+h1,
+h2,
+.card-title {
+    color: #FF51B0;
+}
+
 a,
 i {
     margin-left: 10px;
     margin-right: 10px;
     font-size: 20px;
 }
+
 
 .container {
     width: 100%;
@@ -29,7 +36,11 @@ i {
 main {
     flex: 3;
     /* 3/4 de la largeur */
-    color: #FF51B0;
+    color: grey;
+}
+
+.MemberShip {
+    max-width: 600px;
 }
 
 aside {

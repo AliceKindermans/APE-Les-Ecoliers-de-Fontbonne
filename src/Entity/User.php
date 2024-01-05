@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Child;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -20,6 +22,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank()]
+    #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )] 
     private ?string $email = null;
 
     #[ORM\Column]
@@ -28,22 +34,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min:2, max:50)]
     private ?string $surname = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable:true)]
+    #[Assert\Length(min:2, max:50)]
     private ?string $status = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?bool $rgpd = null;
 
     #[ORM\OneToOne(mappedBy: 'relation', cascade: ['persist', 'remove'])]

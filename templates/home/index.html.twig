@@ -7,8 +7,12 @@
 	<div class="container flex ">
 
 		<main class="mb-3 mt-5">
-			<h1>
-				L'Association</h1>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success mt-4">
+					{{ message }}
+				</div>
+			{% endfor %}
+			<h1>L'Association</h1>
 
 			<div class="mb-3 mt-3">
 				<h2>Qui sommes nous ?</h2>

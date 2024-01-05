@@ -65,7 +65,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     }
 }*/
 
-// MembershipController.php
 
 class MembershipController extends AbstractController
 {
@@ -78,11 +77,10 @@ class MembershipController extends AbstractController
     $userForm->handleRequest($request);
 
     if ($userForm->isSubmitted() && $userForm->isValid()) {
-        // La collection d'enfants est maintenant accessible via le champ 'children'
         $children = $user->getChildren();
 
         foreach ($children as $child) {
-            // Assurez-vous que chaque enfant est associé à l'utilisateur
+            
             $child->addUser($user);
             $manager->persist($child);
         }
@@ -92,11 +90,12 @@ class MembershipController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre adhésion a bien été prise en compte'
+                'Votre adhésion a bien été prise en compte. Nous vous en remercions.'
             );
 
-            // Rafraîchissez la page pour afficher les enfants mis à jour
-            return $this->redirectToRoute('app_membership');
+            return $this->redirectToRoute('app_home');
+        }else {
+            $this->addFlash('error', 'Le formulaire n\'est pas valide.');
         }
 
         return $this->render('membership/index.html.twig', [
@@ -105,5 +104,5 @@ class MembershipController extends AbstractController
             'pubs' => $pubRepo->findAll(),
             'userForm' => $userForm->createView(),
         ]);
-    }
+    } 
 }

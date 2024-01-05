@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class UserType extends AbstractType
 {
@@ -29,9 +30,15 @@ class UserType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'mx-4',
+                ],
+                'choice_attr' => function($choice, $key, $value) {
+                    return ['class' => 'mx-2'];
+                },
+                    
             ])
-            ->add('password')
-            ->add('status')
+            
             ->add('name', TextType::class,[
                 'label' => 'Nom',
                 'required' => true,
@@ -43,11 +50,15 @@ class UserType extends AbstractType
             ->add('rgpd',CheckboxType::class,[
                 'label' => 'Vous acceptez notre politique RGPD',
                 'required' => true,
+                'attr' => [
+                    'class' => 'my-4',
+                ],
             ])
             ->add('children', CollectionType::class, [
                 'entry_type' => ChildType::class,
                 'allow_add' => true,
                 'by_reference' => false,
+                'label' => ' ',
             ])
             
         ;
