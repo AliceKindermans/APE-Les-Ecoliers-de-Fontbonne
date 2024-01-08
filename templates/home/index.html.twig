@@ -4,9 +4,9 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container flex ">
+	<div class="container d-flex flex-wrap ">
 
-		<main class="mb-3 mt-5">
+		<main class="mb-3 mt-5 col-12 col-md-9 ">
 			{% for message in app.flashes('success') %}
 				<div class="alert alert-success mt-4">
 					{{ message }}

@@ -19,12 +19,10 @@ i {
     font-size: 20px;
 }
 
-
 .container {
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-
 }
 
 .flex {
@@ -34,29 +32,40 @@ i {
 }
 
 main {
-    flex: 3;
-    /* 3/4 de la largeur */
     color: grey;
 }
 
 .MemberShip {
     max-width: 600px;
+    margin: 0 auto;
 }
 
 aside {
-    flex: 1;
-    /* 1/4 de la largeur */
     color: #FD8A5E;
 }
 
 /*navbar*/
 nav {
     background-color: #00C69D;
+    margin: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Ajouts Media queries pour version Tablet & Desktop*/
+@media screen and (min-width: 768px) {
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        justify-content: left;
+    }
+
 
 }
 
 /* Personalisation des nav-link pour les états survolés et focus */
-
 .nav-link,
 .footer-link {
     padding: 10px;
@@ -74,32 +83,20 @@ nav {
     text-decoration: none;
 }
 
-/* Ajouts Media queries pour version Tablet & Desktop*/
-@media screen and (min-width: 768px) {
-    .nav-link {
-        font-size: 1.5rem;
-    }
-}
-
-
 /*image logo APE*/
 #logo {
     margin-right: 10px;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border: none;
-    -moz-border-radius: 75px;
-    -webkit-border-radius: 75px;
-    border-radius: 75px;
+    border-radius: 50px;
 }
 
-@media (max-width: 650px) {
+@media (min-width: 650px) {
     #logo {
-        width: 100px;
-        height: 100px;
-        -moz-border-radius: 50px;
-        -webkit-border-radius: 50px;
-        border-radius: 50px;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
     }
 }
 
@@ -110,24 +107,16 @@ nav {
 }
 
 
-
 /* FOOTER */
 
-/* FOOTER */
-
-footer {
+.footer {
     background-color: #00C69D;
-    margin: 0 90px;
+    margin: 20px;
+    padding: 20px;
 }
 
-.footer-contact {
-    justify-content: right;
-}
 
-#contact {
-    display: flex;
-    align-items: center;
-}
+
 
 .copyright,
 .legals {
@@ -136,10 +125,32 @@ footer {
     color: white;
 }
 
+#adress {
+    color: white;
+}
+
 /*Events page*/
 .Eventcard {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
+}
 
+/* ASIDE - pub*/
+.imgPub {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+aside {
+    background-color: lightgray;
+
+}
+
+@media (min-width: 650px) {
+    aside {
+        background-color: white;
+    }
 }
