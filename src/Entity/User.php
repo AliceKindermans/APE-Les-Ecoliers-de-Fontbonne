@@ -11,8 +11,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[Vich\Uploadable]
 #[ORM\Table(name: '`user`')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -57,8 +60,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank()]
     private ?bool $rgpd = null;
 
-    #[ORM\OneToOne(mappedBy: 'relation', cascade: ['persist', 'remove'])]
-    private ?Image $image = null;
+    #[ORM\ManyToMany (targetEntity: Image::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private Collection $image;
 
     #[ORM\ManyToMany(targetEntity: Child::class, mappedBy: 'Users')]
     private Collection $children;
@@ -66,6 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->image = new ArrayCollection();
         $this->createdAt = new DatetimeImmutable();
       
     }
@@ -201,24 +205,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getImage(): ?Image
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImages(): Collection
     {
         return $this->image;
     }
 
-    public function setImage(?Image $image): static
+    public function addImage(Image $image): static
     {
-        // unset the owning side of the relation if necessary
-        if ($image === null && $this->image !== null) {
-            $this->image->setRelation(null);
+        if (!$this->image->contains($image)) {
+            $this->image->add($image);
+            $image->addUser($this);
         }
 
-        // set the owning side of the relation if necessary
-        if ($image !== null && $image->getRelation() !== $this) {
-            $image->setRelation($this);
-        }
+        return $this;
+    }
 
-        $this->image = $image;
+    public function removeImage(Image $image): static
+    {
+        if ($this->image->removeElement($image)) {
+            $image->removeUser($this);
+        }
 
         return $this;
     }

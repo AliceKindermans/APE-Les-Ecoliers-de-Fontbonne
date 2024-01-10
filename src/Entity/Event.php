@@ -8,8 +8,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EventRepository;
 use DateTimeImmutable;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
+#[Vich\Uploadable]
+
 class Event
 {
     #[ORM\Id]
@@ -29,7 +33,7 @@ class Event
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'event')]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'event', cascade: ['persist', 'remove'])]
     private Collection $images;
 
     public function __construct()

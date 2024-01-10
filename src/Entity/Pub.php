@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\PubRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PubRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: PubRepository::class)]
 class Pub
@@ -16,8 +18,43 @@ class Pub
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'pubs')]
-    private ?Image $image = null;
+    #[ORM\OneToMany (mappedBy: 'pub', targetEntity: Image::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $images;
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
+
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImage(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setPub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getPub() === $this) {
+                $image->setPub(null);
+            }
+        }
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -36,15 +73,5 @@ class Pub
         return $this;
     }
 
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
 
-    public function setImage(?Image $image): static
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 }

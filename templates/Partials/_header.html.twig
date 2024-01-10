@@ -15,7 +15,7 @@
 				<a class="nav-link" href="mailto:{{association.email}}">Contactez-Nous</a>
 				{# Si l'utilisateur n'a pas le rôle ROLE_USER, affiche l'icône fa-user #}
 				{% if not is_granted('ROLE_USER') %}
-					<a class="footer-link fa-solid fa-user col-md-3" href=""></a>
+					<a class="footer-link fa-solid fa-user col-md-3" href="{{path ('admin')}}"></a>
 				{% endif %}
 				{# Si l'utilisateur a le rôle ROLE_ADMIN, affiche l'icône fa-screwdriver-wrench #}
 				{% if is_granted('ROLE_ADMIN')%}

@@ -6,8 +6,12 @@ use App\Repository\AssociationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: AssociationRepository::class)]
+#[Vich\Uploadable]
+
 class Association
 {
     #[ORM\Id]
@@ -27,7 +31,7 @@ class Association
     #[ORM\Column(length: 255)]
     private ?string $adress = null;
 
-    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'Association')]
+    #[ORM\ManyToMany(targetEntity: Image::class, mappedBy: 'Association',cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $images;
 
     public function __construct()
