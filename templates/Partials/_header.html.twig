@@ -15,16 +15,16 @@
 				<a class="nav-link" href="mailto:{{association.email}}">Contactez-Nous</a>
 				{# Si l'utilisateur n'a pas le rôle ROLE_USER, affiche l'icône fa-user #}
 				{% if not is_granted('ROLE_USER') %}
-					<a class="footer-link fa-solid fa-user col-md-3" href="{{path ('admin')}}"></a>
+					<a class="footer-link fa-solid fa-user col-md-3" href="{{path ('app_login')}}"></a>
 				{% endif %}
 				{# Si l'utilisateur a le rôle ROLE_ADMIN, affiche l'icône fa-screwdriver-wrench #}
 				{% if is_granted('ROLE_ADMIN')%}
-					<a class="footer-link fa-solid fa-screwdriver-wrench" href=""></a>
+					<a class="footer-link fa-solid fa-screwdriver-wrench" href="{{path ('app_logout')}}"></a>
 				{% endif %}
 
 				{# Si l'utilisateur a le rôle ROLE_USER, affiche l'icône fa-user-xmark #}
 				{% if is_granted('ROLE_USER') %}
-					<a class="footer-link fa-solid fa-user-xmark" href=""></a>
+					<a class="footer-link fa-solid fa-user-xmark" href="{{path ('admin')}}"></a>
 				{% endif %}
 			</nav>
 		{% endfor %}
