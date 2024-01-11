@@ -41,12 +41,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Evénements', 'fas fa-calendar-days', Event::class);
         yield MenuItem::linkToCrud('Verbatims', 'fas fa-list', Verbatim::class);
         yield MenuItem::linkToCrud('Partenaires', 'fas fa-leanpub', Pub::class);
-
-
-
-
-
-
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

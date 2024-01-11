@@ -1,17 +1,12 @@
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('add-child').addEventListener('click', function () { // Clônez le premier champ pour les enfants
-        var firstChild = document.querySelector('.child-form');
-        var clonedChild = firstChild.cloneNode(true);
+document.addEventListener('DOMContentLoaded', function addChildForm() {
+    var container = document.getElementById('children');
+    var index = container.children.length;
 
-        // Effacez les valeurs des champs clonés
-        clonedChild.querySelectorAll('input').forEach(function (input) {
-            input.value = '';
-        });
+    var prototype = container.getAttribute('data-prototype');
+    var newForm = prototype.replace(/__name__/g, index);
 
-        // Ajoutez le champ cloné au conteneur des enfants
-        document.getElementById('children-container').appendChild(clonedChild);
-    })
-});
+    container.insertAdjacentHTML('beforeend', newForm);
+})
 
