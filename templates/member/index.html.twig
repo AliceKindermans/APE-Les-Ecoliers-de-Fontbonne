@@ -18,13 +18,15 @@
 				{% for user in users %}
 					{% if user.status is not empty %}
 						<div class="Eventcard mx-3 my-3" style="width: 18rem;">
-							{% if user.image is not null %}
-								<img src="{{ asset('Images/' ~ user.image.filename) }}" class="card-img-top" alt="image de {{user.status}}">
+							{% if user.images is not null %}
+								{% for image in user.images %}
+									<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{user.name}}">
+								{% endfor %}
 							{% endif %}
 							<div class="card-body">
-								<h2 class="card-title">{{user.name}}
-									{{user.surname}}</h2>
-								<h3 class='card-status'>{{user.status}}</h3>
+								<h3 class="card-title">{{user.name}}
+									{{user.surname}}</h3>
+								<h2 class='card-status'>{{user.status}}</h2>
 								{% if user.children is not empty %}
 									<p>Mes enfants dans le RPI :</p>
 
@@ -51,6 +53,3 @@
 		{% include "partials/_pub.html.twig" %}
 	</div>
 {% endblock %}
-
-
-{# Affichez les détails de l'utilisateur ici #}
