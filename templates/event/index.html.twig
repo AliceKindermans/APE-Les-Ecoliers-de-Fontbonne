@@ -26,9 +26,11 @@
 			<div class="d-flex flex-wrap">
 				{% for event in events %}
 					<div class="Eventcard mx-3 my-3 col-12 col-sm-6 col-md-4" style="width: 18rem;">
-						<img src="..." class="card-img-top" alt="...">
-						<div class="card-body">
-							<h5 class="card-title">{{event.title}}</h5>
+						{% for image in event.images %}
+							<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{event.title}}">
+						{% endfor %}
+						<div class="card-body mt-3">
+							<h5 class="card-title bold">{{event.title}}</h5>
 							<h4 class='card-date'>{{event.date}}</h4>
 							<p class="card-text">{{ event.description}}</p>
 						</div>

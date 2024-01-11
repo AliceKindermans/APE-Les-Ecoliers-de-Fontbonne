@@ -16,11 +16,17 @@
 	<div class="mx-3 my-3 pub">
 		<h2>Nos partenaires
 		</h2>
-		<div class="card  my-3">
-			<img src="Assets/Images/dotpub.jpg" class="card-img-top imgPub" alt="">
-			<div class="card-body">
-				<p class="card-text">Publicité.</p>
+		{% for pub in pubs %}
+			<div class="card  my-3 mt-2">
+				{% if pub.image is not null %}
+					{% for image in pub.image %}
+						<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{pub.name}}">
+					{% endfor %}
+				{% endif %}
+				<div class="card-body">
+					<p class="card-text">{{pub.name}}.</p>
+				</div>
 			</div>
-		</div>
+		{% endfor %}
 	</div>
 </aside>
