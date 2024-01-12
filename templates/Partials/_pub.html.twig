@@ -6,9 +6,10 @@
 
 			<div class="card  my-3">
 				<div class="card-body">
-					<p>"
-						{{verbatim.description}}
-						"</p>
+					<p>"{{verbatim.description | raw}}"</p>
+					{% if verbatim.name is not null %}
+						<p>{{verbatim.name}}</p>
+					{% endif %}
 				</div>
 			</div>
 		{% endfor %}

@@ -10,14 +10,14 @@
 
 		<main class="mb-3 mt-5 col-12 col-md-9">
 			<h1>
-				Nos Membres
+				Le bureau
 			</h1>
 
 			<div class="d-flex flex-wrap">
 
 				{% for user in users %}
 					{% if user.status is not empty %}
-						<div class="Eventcard mx-3 my-3" style="width: 18rem;">
+						<div class="Membercard mx-3 my-3" style="width: 18rem;">
 							{% if user.images is not null %}
 								{% for image in user.images %}
 									<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{user.name}}">

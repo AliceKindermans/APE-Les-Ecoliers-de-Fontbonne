@@ -3,16 +3,16 @@
 		<div class="divTransparente white">
 			<div id="logo">
 				<img src="Assets/Images/LogoAPELesEcoliersDeFontbonneCouleurs.jpg" id="logo" alt="logoApe"></div>
-			<h1>APE : Les Ecoliers de Fontbonne</h1>
+			<h1>APE : Les Écoliers de Fontbonne</h1>
 		</div>
 
 		{% for association in associations %}
 			<nav class="nav container justify-content-right ">
 				<a class="nav-link active " aria-current="page" href="{{path ('app_home')}}">Accueil</a>
-				<a class="nav-link" href="{{path ('app_member')}}">Membres</a>
-				<a class="nav-link" href="{{path ('app_event')}}">Evenements</a>
+				<a class="nav-link" href="{{path ('app_member')}}">Bureau</a>
+				<a class="nav-link" href="{{path ('app_event')}}">Événements</a>
 				<a class="nav-link" href="{{path ('app_membership')}}">Adhésion</a>
-				<a class="nav-link" href="mailto:{{association.email}}">Contactez-Nous</a>
+				<a class="nav-link" href="mailto:{{association.email}}">Contactez nous</a>
 				{# Si l'utilisateur n'a pas le rôle ROLE_USER, affiche l'icône fa-user #}
 				{% if not is_granted('ROLE_USER') %}
 					<a class="footer-link fa-solid fa-user col-md-3" href="{{path ('app_login')}}"></a>

@@ -70,7 +70,7 @@ aside h2 {
 
 /*navbar*/
 nav {
-    background-color: #FF51B0;
+    background-color: #FD8A5E;
     ;
     margin: 20px;
     padding: 20px;
@@ -135,7 +135,7 @@ nav {
 /* FOOTER */
 
 .footer {
-    background-color: #FF51B0;
+    background-color: #FD8A5E;
     padding: 0 20px;
 }
 
@@ -158,12 +158,21 @@ nav {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    color: white;
 }
 
 /* ASIDE - pub*/
 #MemberImage,
-.imgPub {
+.imgPub,
+.imgHome {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+}
+
+/* Member page*/
+.Membercard {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
 }
