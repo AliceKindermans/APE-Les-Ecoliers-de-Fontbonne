@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function addChildForm() {
     var container = document.getElementById('children');
     var index = container.children.length;

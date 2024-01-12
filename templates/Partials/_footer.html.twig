@@ -1,28 +1,31 @@
 <footer>
-	<div class="container">
-		<div class="footer-contact d-flex flex-wrap">
-			{% for association in associations %}
-				<div class="contact-info col-12 col-md-6">
-					<a class="footer-link fa-brands fa-facebook col-3 " href="" target="_blank"></a>
-					<a class="footer-link fa-brands fa-instagram col-3" href="" target="_blank"></a>
-					<a class="footer-link fa-solid fa-envelope col-3" href="mailto:{{association.email}}"></a>
-				</div>
+	<div class="container ">
+		<div class="footer">
+			<div class="footer-contact d-flex flex-wrap">
+				{% for association in associations %}
+					<div class="contact-info col-12 col-md-6">
+						<a class="footer-link fa-brands fa-facebook col-3 " href="" target="_blank"></a>
+						<a class="footer-link fa-brands fa-instagram col-3" href="" target="_blank"></a>
+						<a class="footer-link fa-solid fa-envelope col-3" href="mailto:{{association.email}}"></a>
+					</div>
 
-				<div class="adress col-12 col-md-6">
-					<i class="footer-link fa-solid fa-location-dot"></i>
-					<p style="margin-left: 5px; display: inline; color:white;">
-						place de la mairie 34160 Galargues</p>
-				</div>
-			{% endfor %}
+					<div class="adress col-12 col-md-6">
+						<i class="footer-link fa-solid fa-location-dot"></i>
+						<p style="margin-left: 5px; display: inline; color:white;">
+							place de la mairie 34160 Galargues</p>
+					</div>
+				{% endfor %}
+			</div>
+
+
+			<div class="container legals">
+				<a class="footer-link" href="{{path ('app_legal')}}">Mentions Légales</a>
+				<a class="footer-link" href="{{path ('app_rgpd')}}">Politique RGPD</a>
+			</div>
+
+			<div class="container flex copyright">
+				&copy; 2024 APE : Les écoliers de Fontbonne - Tous droits réservés.
+			</div>
 		</div>
-	</div>
-
-	<div class="container legals">
-		<a class="footer-link" href="{{path ('app_legal')}}">Mentions Légales</a>
-		<a class="footer-link" href="{{path ('app_rgpd')}}">Politique RGPD</a>
-	</div>
-
-	<div class="container flex copyright">
-		&copy; 2024 APE : Les écoliers de Fontbonne - Tous droits réservés.
 	</div>
 </footer>
