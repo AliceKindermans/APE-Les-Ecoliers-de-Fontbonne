@@ -6,36 +6,41 @@
 {% block body %}
 	<div class="container d-flex flex-wrap ">
 
-		<main class="mb-3 mt-5 col-12 col-md-9 ">
-			{% for message in app.flashes('success') %}
-				<div class="alert alert-success mt-4">
-					{{ message }}
+		<main class=" mb-3 mt-5 col-12 col-md-9 ">
+			<div class=" blackboard ">
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success mt-4">
+						{{ message }}
+					</div>
+				{% endfor %}
+				<h1 class="mx-3 my-3">L'association</h1>
+				<div class="mx-3 my-3">
+					<img src="Assets/Images/FondAPE1.png" class="imgHome" alt="ImageApe">
 				</div>
-			{% endfor %}
-			<h1>L'association</h1>
-			<div class="mb-3 mt-3">
-				<img src="Assets/Images/FondAPE1.png" class="imgHome" alt="ImageApe">
-			</div>
-			<div class="mb-3 mt-3">
-				<h2>Qui sommes-nous ?</h2>
-				<p>Ac ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina,
-					<br>
-					ne nos quidem huic uni studio penitus umquam dediti fuimus.
-					<br>
-					Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.</p>
-			</div>
-			<div class="mb-3 mt-3">
-				<h2>
-					Nos missions
-				</h2>
+				<div class="mx-3 my-3">
+					<h2>Qui sommes-nous ?</h2>
+					<p>Ac ne quis a nobis hoc ita dici forte miretur, quod alia quaedam in hoc facultas sit ingeni, neque haec dicendi ratio aut disciplina,
+						<br>
+						ne nos quidem huic uni studio penitus umquam dediti fuimus.
+						<br>
+						Etenim omnes artes, quae ad humanitatem pertinent, habent quoddam commune vinculum, et quasi cognatione quadam inter se continentur.</p>
+				</div>
+				<div class="mx-3 my-3">
+					<h2>
+						Nos missions
+					</h2>
 
-				<p>Iam in altera philosophiae parte. quae est quaerendi ac disserendi, quae logikh dicitur, iste vester plane, ut mihi quidem videtur,
-					<br>
-					inermis ac nudus est. tollit definitiones, nihil de dividendo ac partiendo docet, non quo modo efficiatur concludaturque ratio tradit,
-					<br>
-					non qua via captiosa solvantur ambigua distinguantur ostendit;
-					<br>
-					iudicia rerum in sensibus ponit, quibus si semel aliquid falsi pro vero probatum sit, sublatum esse omne iudicium veri et falsi putat.</p>
+					<p>Iam in altera philosophiae parte. quae est quaerendi ac disserendi, quae logikh dicitur, iste vester plane, ut mihi quidem videtur,
+						<br>
+						inermis ac nudus est. tollit definitiones, nihil de dividendo ac partiendo docet, non quo modo efficiatur concludaturque ratio tradit,
+						<br>
+						non qua via captiosa solvantur ambigua distinguantur ostendit;
+						<br>
+						iudicia rerum in sensibus ponit, quibus si semel aliquid falsi pro vero probatum sit, sublatum esse omne iudicium veri et falsi putat.</p>
+				</div>
+				<div class="mx-3 my-3">
+					<img src="Assets/Images/eleveTableau.png" class="imgStudent" alt="ImageApe">
+				</div>
 			</div>
 		</main>
 

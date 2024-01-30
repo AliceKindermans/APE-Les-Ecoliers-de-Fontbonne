@@ -1,5 +1,5 @@
 body {
-    font-family: 'Eczar', serif;
+    font-family: 'Chalkboard', cursive;
     background: rgb(255, 81, 176);
 
     background: linear-gradient(90deg, rgba(255, 101, 143, 1) 0%, rgba(252, 182, 127, 1) 75%, rgba(249, 248, 113, 1) 100%);
@@ -27,6 +27,12 @@ h3 {
     color: #FD8A5E;
 }
 
+h1,
+h2,
+h3 {
+    font-family: 'Indie Flower', cursive;
+}
+
 .card-body h3 {
     color: #FF51B0;
 }
@@ -45,7 +51,6 @@ i {
 .container {
     width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
 
 }
 
@@ -55,12 +60,17 @@ i {
     justify-content: center;
 }
 
-main {
-    color: #8D506D;
+
+/* Ajouts Media queries pour version Tablet & Desktop*/
+@media screen and (min-width: 768px) {
+    main {
+        max-width: 70%;
+    }
 }
 
+
 .MemberShip {
-    max-width: 600px;
+    min-width: 300px;
     margin: 0 auto;
 }
 
@@ -75,19 +85,6 @@ nav {
     margin: 20px;
     padding: 20px;
     justify-content: center;
-}
-
-/* Ajouts Media queries pour version Tablet & Desktop*/
-@media screen and (min-width: 768px) {
-    .nav-link {
-        font-size: 1.5rem;
-    }
-
-    nav {
-        justify-content: left;
-    }
-
-
 }
 
 /* Personalisation des nav-link pour les états survolés et focus */
@@ -107,6 +104,22 @@ nav {
     color: white;
     text-decoration: none;
 }
+
+/* Ajouts Media queries pour version Tablet & Desktop*/
+@media screen and (min-width: 768px) {
+
+    .nav-link,
+    .footer-link {
+        font-size: 2rem;
+    }
+
+    nav {
+        justify-content: left;
+    }
+
+
+}
+
 
 /*image logo APE*/
 #logo {
@@ -171,8 +184,57 @@ nav {
 }
 
 /* Member page*/
-.Membercard {
+.Membercard,
+.Eventcard {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 10px;
+    color: white;
+    /* Fond plus sombre pour les cartes */
+}
+
+/* Tableau noir*/
+
+.blackboard {
+    width: 100%;
+    min-width: 100%;
+    background-color: #000;
+    border: 20px solid #916046;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-family: 'Chalkboard', cursive;
+    line-height: 1.5;
+
+}
+
+.imgStudent {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 375px;
+}
+
+/* Ajouts Media queries pour version Tablet & Desktop*/
+@media screen and (min-width: 768px) {
+
+    .imgStudent {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 750px;
+    }
+}
+
+
+
+.blackboard h1,
+.blackboard h2,
+.blackboard h3,
+.blackboard p {
+    color: #fff;
+    /* Couleur blanche pour les titres et les paragraphes */
 }

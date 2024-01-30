@@ -9,45 +9,48 @@
 	<div class="container d-flex flex-wrap ">
 
 		<main class="mb-3 mt-5 col-12 col-md-9">
-			<h1>
-				Le bureau
-			</h1>
+			<div class=" blackboard ">
 
-			<div class="d-flex flex-wrap">
+				<h1>
+					Le bureau
+				</h1>
 
-				{% for user in users %}
-					{% if user.status is not empty %}
-						<div class="Membercard mx-3 my-3" style="width: 18rem;">
-							{% if user.images is not null %}
-								{% for image in user.images %}
-									<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{user.name}}">
-								{% endfor %}
-							{% endif %}
-							<div class="card-body">
-								<h3 class="card-title">{{user.name}}
-									{{user.surname}}</h3>
-								<h2 class='card-status'>{{user.status}}</h2>
-								{% if user.children is not empty %}
-									<p>Mes enfants dans le RPI :</p>
+				<div class="d-flex flex-wrap">
 
-									{% for child in user.children %}
-										<ul>
-											<li>{{ child.name }}
-												{{ child.surname }}
-												en
-												{{ child.grade }}
-												dans la classe de
-												{{ child.mistress }}
-												.</li>
-										</ul>
-
+					{% for user in users %}
+						{% if user.status is not empty %}
+							<div class="Membercard mx-3 my-3" style="width: 16rem;">
+								{% if user.images is not null %}
+									{% for image in user.images %}
+										<img src="{{ vich_uploader_asset(image, 'imageFile' )}}" class="card-img-top" id="MemberImage" alt="{{user.name}}">
 									{% endfor %}
-
 								{% endif %}
+								<div class="card-body">
+									<h3 class="card-title">{{user.name}}
+										{{user.surname}}</h3>
+									<h2 class='card-status'>{{user.status}}</h2>
+									{% if user.children is not empty %}
+										<p>Mes enfants dans le RPI :</p>
+
+										{% for child in user.children %}
+											<ul>
+												<li>{{ child.name }}
+													{{ child.surname }}
+													en
+													{{ child.grade }}
+													dans la classe de
+													{{ child.mistress }}
+													.</li>
+											</ul>
+
+										{% endfor %}
+
+									{% endif %}
+								</div>
 							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
+						{% endif %}
+					{% endfor %}
+				</div>
 			</div>
 		</main>
 		{% include "partials/_pub.html.twig" %}

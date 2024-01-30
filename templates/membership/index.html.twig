@@ -6,13 +6,11 @@
 {% block body %}
 
 
-	<div class="container flex ">
-
-		<main class="mb-3 mt-5 MemberShip">
+	<main class="mb-3 mt-5 MemberShip">
+		<div class=" blackboard ">
 			<h1>Adhésion</h1>
-
 			{{ form_start(userForm) }}
-			<div class="row g-3">
+			<div class="row g-3 mx-3 my-3">
 				<div class="col mb-4 ">
 					{{ form_row(userForm.name, {'attr': {'class': 'form-control'}}) }}
 				</div>
@@ -21,22 +19,25 @@
 				</div>
 
 			</div>
-			{{ form_row(userForm.email,  {'attr': {'class': 'form-control mb-4'}}) }}
+			<div class=" mx-3 my-3">
+				{{ form_row(userForm.email,  {'attr': {'class': 'form-control mb-4 '}}) }}
 
-			{{ form_row(userForm.roles, {'attr': {'class': 'mb-4'}}) }}
-			<p>Enregistrer vos enfants
-			</p>
-			<div id="children" data-prototype="{{ form_widget(userForm.children.vars.prototype)|e('html_attr') }}">
-				{% for childForm in userForm.children %}
-					{{ form_row(childForm, {'attr': {'class': 'form-control'}}) }}
-				{% endfor %}
+				{{ form_row(userForm.roles, {'attr': {'class': 'mb-4'}}) }}
+				<p>Enregistrer vos enfants
+				</p>
+				<div id="children" data-prototype="{{ form_widget(userForm.children.vars.prototype)|e('html_attr') }}">
+					{% for childForm in userForm.children %}
+						{{ form_row(childForm, {'attr': {'class': 'form-control'}}) }}
+					{% endfor %}
+				</div>
+				<button class="btn btn-secondary" type=" button" onclick=" addChildForm()">Ajouter un enfant</button>
+				{{ form_row(userForm.rgpd) }}
+				<button class="btn btn-secondary" type="submit">S'inscrire</button>
+				{{ form_end(userForm) }}
 			</div>
-			<button class="btn btn-secondary" type=" button" onclick=" addChildForm()">Ajouter un enfant</button>
-			{{ form_row(userForm.rgpd) }}
-			<button class="btn btn-secondary" type="submit">S'inscrire</button>
-			{{ form_end(userForm) }}
 		</div>
-	</div>
+	</main>
+
 {% endblock %}
 
 {% block javascripts %}
